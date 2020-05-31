@@ -9,7 +9,7 @@
         <pg-sidebar></pg-sidebar>
 
         <!-- TODO:have this dynamically change and generate appropriate info for different sections -->
-        <router-view></router-view>
+        <router-view />
 
         <div class="dialog-container">
             <!-- dialogs instanciate within this container -->
@@ -363,4 +363,14 @@
         text-align: center;
         color: #2c3e50;
     }
+
+    .control-panel {
+        margin:2vw;
+        border: 1px solid black;
+        background-color: lightgray;
+        color: black;
+        height: 78vh;
+        width: 80vw;
+    }
+
 </style>

@@ -10,11 +10,18 @@ Vue.use( Router );
 
 import Home from '@/routes/Home.vue'
 import About from '@/routes/About.vue'
-
+import lsNavigator from '@/routes/Navigator.vue'
+import lsEngineer from '@/routes/Engineer.vue'
+import lsCaptain from '@/routes/Captain.vue'
+import lsXO from '@/routes/FirstOfficer.vue'
 
 export default new Router({
     routes: [
-        { path:"/",     name:"Root", component: About },
-        { path:"/home", name:"Home", component: Home, props: { name: "DemoApp"} },
+        { path:"/",             name:"Lobby",        component: About },
+        { path:"/navigator",    name:"Navigator",    component: lsNavigator },
+        { path:"/captain",      name:"Captain",      component: lsCaptain, props: { user: 'Alex' } },
+        { path:"/firstofficer", name:"FirstOfficer", component: lsXO },
+        { path:"/engineer",     name:"Engineer",     component: lsEngineer },
+        { path:"/home",         name:"Home",         component: Home, props: { name: "LtSonar"} },
     ]
 });
