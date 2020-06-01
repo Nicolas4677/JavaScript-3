@@ -23,6 +23,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import xoSystem from '@/components/SonarSystem.vue'
+    import minesSystemImg from "@/assets/systems/mines-system.jpg"
 
     class FirstOfficerController extends Controller {
 
@@ -34,7 +35,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                     { 
                         id: "Mines",
                         amountToUnlock: 3,
-                        imgSrc: "/../assets/systems/mines-system.jpg"
+                        imgSrc: minesSystemImg // OR Require("@/assets/systems/mines-system.jpg")
                     },
                     { 
                         id: "Drones",
