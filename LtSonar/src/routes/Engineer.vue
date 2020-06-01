@@ -25,113 +25,122 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
+            const attackButtonColor = '#A60B20';
+            const yellowButtonColor = '#F0E74D';
+            const utiltyButtonColor = '#327136';
+            const radioactiveButtonColor = '#251D7C';
+
+            const primaryCircuitColor = '#FFFF7D';
+            const secondaryCircuitColor = '#D45D26';
+            const tertiaryCircuitColor = '#B3B3B3';
+
             this.vm = {
                 name: 'Engineer control panel',
                 firstSection: {
                     topButtons: [
                         {
-                            background: 'red',
-                            "border-color": 'FFFF7D'
+                            background: attackButtonColor,
+                            "border-color": primaryCircuitColor
                         },
                         {
-                            background: 'yellow',
-                            "border-color": 'FFFF7D'
+                            background: yellowButtonColor,
+                            "border-color": primaryCircuitColor
                         },
                         {
-                            background: 'green',
-                            "border-color": 'FFFF7D'
+                            background: utiltyButtonColor,
+                            "border-color": primaryCircuitColor
                         },
                     ],
                     bottomButtons: [
                         {
-                            background: 'green'
+                            background: utiltyButtonColor
                         },
                         {
-                            background: 'blue'
+                            background: radioactiveButtonColor
                         },
                         {
-                            background: 'blue'
+                            background: radioactiveButtonColor
                         }
                     ]
                 },
                 secondSection: {
                     topButtons: [
                         {
-                            background: 'yellow',
-                            "border-color": 'FFD57D'
+                            background: yellowButtonColor,
+                            "border-color": secondaryCircuitColor
                         },
                         {
-                            background: 'red',
-                            "border-color": 'FFD57D'
+                            background: attackButtonColor,
+                            "border-color": secondaryCircuitColor
                         },
                         {
-                            background: 'yellow',
-                            "border-color": 'FFD57D'
+                            background: yellowButtonColor,
+                            "border-color": secondaryCircuitColor
                         },
                     ],
                     bottomButtons: [
                         {
-                            background: 'green'
+                            background: utiltyButtonColor
                         },
                         {
-                            background: 'red'
+                            background: attackButtonColor
                         },
                         {
-                            background: 'blue'
+                            background: radioactiveButtonColor
                         }
                     ]
                 },
                 thirdSection: {
                     topButtons: [
                         {
-                            background: 'green',
-                            "border-color": 'B3B3B3'
+                            background: utiltyButtonColor,
+                            "border-color": tertiaryCircuitColor
                         },
                         {
-                            background: 'yellow',
-                            "border-color": 'B3B3B3'
+                            background: yellowButtonColor,
+                            "border-color": tertiaryCircuitColor
                         },
                         {
-                            background: 'red',
-                            "border-color": 'B3B3B3'
+                            background: attackButtonColor,
+                            "border-color": tertiaryCircuitColor
                         },
                     ],
                     bottomButtons: [
                         {
-                            background: 'red'
+                            background: attackButtonColor
                         },
                         {
-                            background: 'blue'
+                            background: radioactiveButtonColor
                         },
                         {
-                            background: 'yellow'
+                            background: yellowButtonColor
                         }
                     ]
                 },
                 fourthSection: {
                     topButtons: [
                         {
-                            background: 'green',
-                            "border-color": 'FFD57D'
+                            background: utiltyButtonColor,
+                            "border-color": secondaryCircuitColor
                         },
                         {
-                            background: 'yellow',
-                            "border-color": 'B3B3B3'
+                            background: yellowButtonColor,
+                            "border-color": tertiaryCircuitColor
                         },
                         {
-                            background: 'red',
-                            "border-color": 'FFFF7D'
+                            background: attackButtonColor,
+                            "border-color": primaryCircuitColor
                         },
                     ],
                     bottomButtons: [
                         {
-                            background: 'blue'
+                            background: radioactiveButtonColor
                         },
                         {
-                            background: 'green'
+                            background: utiltyButtonColor
                         },
                         {
-                            background: 'blue'
+                            background: radioactiveButtonColor
                         }
                     ]
                 }
