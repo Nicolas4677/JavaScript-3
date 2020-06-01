@@ -8,12 +8,16 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         <div class="control-panel">
             <h1 class="title">{{ name }}</h1>
             <div class="controls-wrapper">
-                <ls-engineer-control-section v-bind:sectionData="firstSection" title="West"/>
-                <ls-engineer-control-section v-bind:sectionData="secondSection" title="North"/>
-                <ls-engineer-control-section v-bind:sectionData="thirdSection" title="South"/>
-                <ls-engineer-control-section v-bind:sectionData="fourthSection" title="East"/>
+                <ls-engineer-control-section v-for="(sectionData, index) in sectionStyleData" :key="index" :sectionData="sectionData" :title="sectionData.title"/>
             </div>
         </div>
+        <ul class="legend">
+            <li><span class=""></span> Super Awesome</li>
+            <li><span class="awesome"></span> Awesome</li>
+            <li><span class="kindaawesome"></span> Kinda Awesome</li>
+            <li><span class="notawesome"></span> Not Awesome</li>
+        </ul>
+
     </section>
 
 </template>
@@ -25,10 +29,36 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
-            const attackButtonColor = '#A60B20';
-            const yellowButtonColor = '#F0E74D';
-            const utiltyButtonColor = '#327136';
-            const radioactiveButtonColor = '#251D7C';
+
+            const missileIcon = require('@/assets/missile.svg');
+            const submarineIcon = require('@/assets/submarine.svg');
+            const nuclearIcon = require('@/assets/nuclear.svg');
+            const sonarIcon = require('@/assets/sonar.svg');
+
+            const attackButton = {
+                background: '#A60B20',
+                'background-image': `url(${missileIcon})`,
+                'background-repeat': 'no-repeat, repeat',
+                'background-size': 'cover'
+            };
+            const submarineButton = {
+                background: '#F0E74D',
+                'background-image': `url(${submarineIcon})`,
+                'background-repeat': 'no-repeat, repeat',
+                'background-size': 'cover'
+            };
+            const utiltyButton = {
+                background: '#327136',
+                'background-image': `url(${sonarIcon})`,
+                'background-repeat': 'no-repeat, repeat',
+                'background-size': 'cover'
+            };
+            const radioactiveButton = {
+                background: '#251D7C',
+                'background-image': `url(${nuclearIcon})`,
+                'background-repeat': 'no-repeat, repeat',
+                'background-size': 'cover'
+            };
 
             const primaryCircuitColor = '#FFFF7D';
             const secondaryCircuitColor = '#D45D26';
@@ -36,114 +66,80 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
             this.vm = {
                 name: 'Engineer control panel',
-                firstSection: {
-                    topButtons: [
-                        {
-                            background: attackButtonColor,
-                            "border-color": primaryCircuitColor
-                        },
-                        {
-                            background: yellowButtonColor,
-                            "border-color": primaryCircuitColor
-                        },
-                        {
-                            background: utiltyButtonColor,
-                            "border-color": primaryCircuitColor
-                        },
-                    ],
-                    bottomButtons: [
-                        {
-                            background: utiltyButtonColor
-                        },
-                        {
-                            background: radioactiveButtonColor
-                        },
-                        {
-                            background: radioactiveButtonColor
-                        }
-                    ]
-                },
-                secondSection: {
-                    topButtons: [
-                        {
-                            background: yellowButtonColor,
-                            "border-color": secondaryCircuitColor
-                        },
-                        {
-                            background: attackButtonColor,
-                            "border-color": secondaryCircuitColor
-                        },
-                        {
-                            background: yellowButtonColor,
-                            "border-color": secondaryCircuitColor
-                        },
-                    ],
-                    bottomButtons: [
-                        {
-                            background: utiltyButtonColor
-                        },
-                        {
-                            background: attackButtonColor
-                        },
-                        {
-                            background: radioactiveButtonColor
-                        }
-                    ]
-                },
-                thirdSection: {
-                    topButtons: [
-                        {
-                            background: utiltyButtonColor,
-                            "border-color": tertiaryCircuitColor
-                        },
-                        {
-                            background: yellowButtonColor,
-                            "border-color": tertiaryCircuitColor
-                        },
-                        {
-                            background: attackButtonColor,
-                            "border-color": tertiaryCircuitColor
-                        },
-                    ],
-                    bottomButtons: [
-                        {
-                            background: attackButtonColor
-                        },
-                        {
-                            background: radioactiveButtonColor
-                        },
-                        {
-                            background: yellowButtonColor
-                        }
-                    ]
-                },
-                fourthSection: {
-                    topButtons: [
-                        {
-                            background: utiltyButtonColor,
-                            "border-color": secondaryCircuitColor
-                        },
-                        {
-                            background: yellowButtonColor,
-                            "border-color": tertiaryCircuitColor
-                        },
-                        {
-                            background: attackButtonColor,
-                            "border-color": primaryCircuitColor
-                        },
-                    ],
-                    bottomButtons: [
-                        {
-                            background: radioactiveButtonColor
-                        },
-                        {
-                            background: utiltyButtonColor
-                        },
-                        {
-                            background: radioactiveButtonColor
-                        }
-                    ]
-                }
+                sectionStyleData: [
+                    {
+                        title: 'West',
+                        topButtons: [
+                            {
+                                ...attackButton,
+                                "border-color": primaryCircuitColor
+                            },
+                            {
+                                ...submarineButton,
+                                "border-color": primaryCircuitColor
+                            },
+                            {
+                                ...utiltyButton,
+                                "border-color": primaryCircuitColor
+                            },
+                        ],
+                        bottomButtons: [ utiltyButton, radioactiveButton, radioactiveButton ]
+                    },
+                    {
+                        title: 'North',
+                        topButtons: [
+                            {
+                                ...submarineButton,
+                                "border-color": secondaryCircuitColor
+                            },
+                            {
+                                ...attackButton,
+                                "border-color": secondaryCircuitColor
+                            },
+                            {
+                                ...submarineButton,
+                                "border-color": secondaryCircuitColor
+                            },
+                        ],
+                        bottomButtons: [ utiltyButton, attackButton, radioactiveButton ]
+                    },
+                    {
+                        title: 'South',
+                        topButtons: [
+                            {
+                                ...utiltyButton,
+                                "border-color": tertiaryCircuitColor
+                            },
+                            {
+                                ...submarineButton,
+                                "border-color": tertiaryCircuitColor
+                            },
+                            {
+                                ...attackButton,
+                                "border-color": tertiaryCircuitColor
+                            },
+                        ],
+                        bottomButtons: [ attackButton, radioactiveButton, submarineButton ]
+                    },
+                    {
+                        title: 'East',
+                        topButtons: [
+                            {
+                                ...utiltyButton,
+                                "border-color": secondaryCircuitColor
+                            },
+                            {
+                                ...submarineButton,
+                                "border-color": tertiaryCircuitColor
+                            },
+                            {
+                                ...attackButton,
+                                "border-color": primaryCircuitColor
+                            },
+                        ],
+                        bottomButtons: [ radioactiveButton , utiltyButton , radioactiveButton ]
+                    }
+                ]
             }
         }
     }
@@ -169,34 +165,4 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         justify-content: space-around;
         width: 80vw;
     }
-
-    /*.controls-section {
-        width: 23%;
-        height: 50vh;
-        padding: 20px;
-        background-color: cadetblue;
-    }
-
-    .control-line {
-        display: flex;
-        margin-top: 10%;
-        margin-bottom: 10%;
-        flex-direction: row;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-
-    .control-button {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        border: 2px solid black;
-    }
-
-    .control-button-special {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
-        border: 5px solid black;
-    } */
 </style>

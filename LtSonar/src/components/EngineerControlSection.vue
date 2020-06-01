@@ -10,7 +10,7 @@
     <section class="controls-section">  <!-- Just one main element per template -->
         <h1>{{ title }}</h1>
         <div class="control-line">
-            <div v-for="(data, index) in sectionData.topButtons" :key="index" class="control-button-special" v-bind:style="data"></div>
+            <div v-for="(data, index) in sectionData.topButtons" :key="index" class="control-button special" v-bind:style="data"></div>
         </div>
         <hr>
         <div class="control-line">
@@ -71,19 +71,8 @@
         cursor: pointer;
     }
 
-    .control-button-special {
-        border-radius: 50%;
-        width: 100px;
-        height: 100px;
+    .special {
         border: 10px solid black;
-        box-shadow: 0 9px #999;
-        cursor: pointer;
-    }
-
-    .control-button-special:active {
-        background-color: #3e8e41;
-        box-shadow: 0 5px #666;
-        transform: translateY(4px);
     }
 
     .control-button:active {
