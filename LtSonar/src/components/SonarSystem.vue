@@ -5,9 +5,9 @@
     <section class="container">
         <div class="content">
             {{ id }}
-            {{amountToUnlock}}
         </div>
         <img v-bind:src=imgSrc v-bind:width=imgWidth v-bind:height=imgHeight>
+        <span> Amount to unlock: {{amountToUnlock}}</span>
     </section>
 
 </template>
@@ -22,8 +22,8 @@
             super(name, subComponentList);
 
             this.vm = {
-                imgWidth: 25,
-                imgHeight: 25
+                imgWidth: "100px",
+                imgHeight: "100px"
             }
 
             this.props = {
@@ -48,7 +48,10 @@
 
     .content {
         display: flex;
-        
+    }
+
+    img {
+        border-radius: 50%;
     }
 
 </style>

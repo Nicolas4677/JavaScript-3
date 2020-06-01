@@ -23,7 +23,11 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import xoSystem from '@/components/SonarSystem.vue'
+
+    //Images
     import minesSystemImg from "@/assets/systems/mines-system.jpg"
+    import dronesSystemImg from "@/assets/systems/drones-system.jpg"
+    import torpedosSystemImg from "@/assets/systems/torpedos-system.jpg"
 
     class FirstOfficerController extends Controller {
 
@@ -40,27 +44,27 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                     { 
                         id: "Drones",
                         amountToUnlock: 4,
-                        imgSrc: "@/assets/systems/drones-system.jpg"
+                        imgSrc: dronesSystemImg
                     },
                     { 
                         id: "Silence",
                         amountToUnlock: 6,
-                        imgSrc: "@/assets/systems/mines-system.jpg"
+                        imgSrc: minesSystemImg
                     },
                     { 
                         id: "Torpedo",
                         amountToUnlock: 3,
-                        imgSrc: "@/assets/systems/torpedos-system.jpg"
+                        imgSrc: torpedosSystemImg
                     },
                     { 
                         id: "Sonar",
                         amountToUnlock: 3,
-                        imgSrc: "@/assets/systems/mines-system.jpg"
+                        imgSrc: minesSystemImg
                     },
                     { 
                         id: "Scenario",
                         amountToUnlock: 6,
-                        imgSrc: "@/assets/systems/mines-system.jpg"
+                        imgSrc: minesSystemImg
                     }
                 ]
             }
