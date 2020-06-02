@@ -14,13 +14,13 @@
         <table>
             <tr>
                 <th></th>
-                <th v-for="index in 15" :key="index">
-                    {{ index }}
+                <th v-for="(row, index) in mapCells" :key="index">
+                    {{ index + 1 }}
                 </th>
             </tr>
-            <tr v-for="index in 15" :key="index">
-                <th>{{ String.fromCharCode(index + 64) }}</th>
-                <td v-for="index in 15" :key="index"></td>
+            <tr v-for="(row, index) in mapCells" :key="index">
+                <th>{{ String.fromCharCode(index + 65) }}</th>
+                <td v-for="(value, index) in row" :key="index" :class="value === 0 ? 'water' : 'ground'"></td>
             </tr>
         </table>
     </section>
@@ -35,6 +35,25 @@
 
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
+            this.vm = {
+                mapCells: [
+                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
+                    [ 0,0,1,0,0,0,1,0,0,0,0,0,1,1,0 ],
+                    [ 0,0,1,0,0,0,0,0,1,0,0,0,1,0,0 ],
+                    [ 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0 ],
+                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
+                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
+                    [ 0,1,0,1,0,0,1,0,1,0,0,0,0,0,0 ],
+                    [ 0,1,0,1,0,0,1,0,0,0,0,0,0,0,0 ],
+                    [ 0,0,0,1,0,0,0,1,0,0,0,1,1,1,0 ],
+                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
+                    [ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0 ],
+                    [ 0,0,1,0,0,0,0,1,0,0,0,1,0,0,0 ],
+                    [ 1,0,0,1,0,0,0,0,0,0,0,0,1,0,0 ],
+                    [ 0,0,0,1,0,0,1,0,1,0,0,0,0,1,0 ],
+                    [ 0,0,0,0,1,0,0,0,0,0,0,0,0,0,0 ]
+                ]
+            }
             this.props = {
                 size: Number
             }
@@ -68,6 +87,14 @@
 
     .background {
         position: absolute;
+    }
+
+    .water {
+        background-color: blue;
+    }
+
+    .ground {
+        background-color: green;
     }
 
 </style>

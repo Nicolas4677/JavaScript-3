@@ -5,14 +5,24 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <template>
 
     <section class="navigator-container">
-        <div class="about">
+        <div class="control-panel">
             <h1 class="title">{{ name }}</h1>
+            <div class="controls-content">
+                <div class="batch-container">
+                    <name-batch class="batch-item"></name-batch>
+                </div>
+                <ls-map></ls-map>
+            </div>
+            <ls-chat v-bind:user="user" team="Team A"></ls-chat>
         </div>
     </section>
 
 </template>
 <script>
     import Controller from '@/../lib/controller'
+    import lsChat from '@/components/Chat.vue';
+    import lsMap from '@/components/Map.vue';
+    import nameBatch from '@/components/NameBatch.vue'
 
     class NavigatorController extends Controller {
 
@@ -24,23 +34,18 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new NavigatorController('lsNavigator');
+    export default new NavigatorController('lsNavigator', { lsChat, lsMap, nameBatch });
 
 </script>
 <style scoped>
 /* Local styles for this template */
-    .about-container {
-        display: inline-block;
+    .control-panel {
         width: 100%;
     }
 
-    .about {
-        margin:2vw;
-        border: 1px solid black;
-        background-color: lightgray;
-        color: black;
-        height: 78vh;
-        width: 80vw;
+    .controls-content {
+        display: flex;
+        flex-direction: row-reverse;
     }
 
     .title {

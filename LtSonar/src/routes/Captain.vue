@@ -9,7 +9,12 @@ Usage: <ls-captain user="Username"/>
     <section class="captain-container">
         <div class="control-panel">
             <h1 class="title">{{ name }}</h1>
-            <ls-map size=15></ls-map>
+            <div class="controls-content">
+                <div class="batch-container">
+                    <name-batch class="batch-item"></name-batch>
+                </div>
+                <ls-map></ls-map>
+            </div>
             <ls-chat v-bind:user="user" team="Team A"></ls-chat>
             <div class="status panel-status">Sub is not sunk</div>
             <div class="controls panel-control">Buttons here</div>
@@ -21,6 +26,7 @@ Usage: <ls-captain user="Username"/>
     import Controller from '@/../lib/controller'
     import lsChat from '@/components/Chat.vue';
     import lsMap from '@/components/Map.vue';
+    import nameBatch from '@/components/NameBatch.vue'
 
     class CaptainController extends Controller {
 
@@ -35,14 +41,18 @@ Usage: <ls-captain user="Username"/>
         }
     }
 
-    export default new CaptainController('lsCaptain', { lsChat, lsMap });
+    export default new CaptainController('lsCaptain', { lsChat, lsMap, nameBatch });
 
 </script>
 <style scoped>
 /* Local styles for this template */
-    .control-container {
-        display: inline-block;
+    .control-panel {
         width: 100%;
+    }
+
+    .controls-content {
+        display: flex;
+        flex-direction: row-reverse;
     }
 
     .title {
