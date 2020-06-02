@@ -68,6 +68,7 @@
         border-radius: 50%;
         object-fit: cover;
         margin: 10px;
+        cursor: pointer;
     }
 
     .block {
