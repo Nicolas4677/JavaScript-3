@@ -9,7 +9,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             <h1 class="title">{{ name }}</h1>
             <div class="grid-container">
                 <name-batch class="batch-item"></name-batch>
-                <div class="submarine-stats-item">Submarine stats</div>
+                <xo-system class="submarine-stats-item"
+                            v-bind:id="submarineStats.id"
+                            v-bind:amountToUnlock="submarineStats.amountToUnlock"
+                            v-bind:imgSrc="submarineStats.imgSrc"></xo-system>
                 <xo-system v-for="(item, index) in systems" :key="index" 
                             v-bind:id="item.id" 
                             v-bind:amountToUnlock="item.amountToUnlock"
@@ -38,6 +41,11 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             super( name, subComponentList );
             this.vm = {
                 name: 'First Officer control panel',
+                submarineStats: {
+                    id: "Stats",
+                    amountToUnlock: 10,
+                    imgSrc: submarineSystemImg
+                },
                 systems: [
                     { 
                         id: "Mines",
