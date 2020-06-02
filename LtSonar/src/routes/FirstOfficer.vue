@@ -8,7 +8,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         <div class="about">
             <h1 class="title">{{ name }}</h1>
             <div class="grid-container">
-                <div class="batch-item">Batch item</div>
+                <name-batch class="batch-item"></name-batch>
                 <div class="submarine-stats-item">Submarine stats</div>
                 <xo-system v-for="(item, index) in systems" :key="index" 
                             v-bind:id="item.id" 
@@ -23,6 +23,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import xoSystem from '@/components/SonarSystem.vue'
+    import nameBatch from '@/components/NameBatch.vue'
 
     //Images
     import minesSystemImg from "@/assets/systems/mines-system.jpg"
@@ -73,7 +74,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new FirstOfficerController('lsXO', { xoSystem });
+    export default new FirstOfficerController('lsXO', { xoSystem, nameBatch });
 
 </script>
 <style scoped>
