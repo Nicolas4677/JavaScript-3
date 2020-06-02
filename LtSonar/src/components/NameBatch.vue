@@ -5,10 +5,10 @@
                     <form style="display: flex; flex-direction: column">
                         
                         <label for="team-name">Team Name</label>
-                        <input type="text" id="team-name" name="lastname" placeholder="Your last name.."><br>      
+                        <input type="text" id="team-name" name="teamname" placeholder="Your team name.."><br>      
                         
                         <label for="member-name">Member Name</label>               
-                        <input type="text" id="member-name" name="lastname" placeholder="Your last name..">
+                        <input type="text" id="member-name" name="membername" placeholder="Your name..">
                     </form>
                 </div>
             </div>
@@ -39,6 +39,7 @@
     }
 
     .container {
-        background-color: rgb(38, 80, 160);
+        background-color: rgb(17, 33, 80);
+        padding: 10px;
     }
 </style>
