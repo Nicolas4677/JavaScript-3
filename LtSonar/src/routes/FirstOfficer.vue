@@ -28,6 +28,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import minesSystemImg from "@/assets/systems/mines-system.jpg"
     import dronesSystemImg from "@/assets/systems/drones-system.jpg"
     import torpedosSystemImg from "@/assets/systems/torpedos-system.jpg"
+    import sonarSystemImg from "@/assets/systems/sonar-system.jpg"
+    import submarineSystemImg from "@/assets/systems/submarine-system.jpg"
 
     class FirstOfficerController extends Controller {
 
@@ -49,7 +51,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                     { 
                         id: "Silence",
                         amountToUnlock: 6,
-                        imgSrc: minesSystemImg
+                        imgSrc: submarineSystemImg
                     },
                     { 
                         id: "Torpedo",
@@ -59,12 +61,12 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                     { 
                         id: "Sonar",
                         amountToUnlock: 3,
-                        imgSrc: minesSystemImg
+                        imgSrc: sonarSystemImg
                     },
                     { 
                         id: "Scenario",
                         amountToUnlock: 6,
-                        imgSrc: minesSystemImg
+                        imgSrc: submarineSystemImg
                     }
                 ]
             }
@@ -108,7 +110,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         grid-template-areas: 
         'batch stats stats';
         grid-gap: 10px;
-        background-color: #2196F3;
+        background-color: rgb(14, 74, 122);
         padding: 10px;
     }
     .grid-container > div {
