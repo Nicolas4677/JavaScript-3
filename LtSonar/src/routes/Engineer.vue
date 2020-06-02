@@ -7,6 +7,9 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     <section class="engineer-container">
         <div class="control-panel">
             <h1 class="title">{{ name }}</h1>
+            <div class="batch-container">
+                <name-batch class="batch-item"></name-batch>
+            </div>
             <div class="controls-wrapper">
                 <ls-engineer-control-section v-for="(sectionData, index) in sectionStyleData" :key="index" :sectionData="sectionData" :title="sectionData.title"/>
             </div>
@@ -24,6 +27,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import lsEngineerControlSection from '@/components/EngineerControlSection.vue';
+
+    import nameBatch from '@/components/NameBatch.vue'
 
     class EngineerController extends Controller {
 
@@ -144,7 +149,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new EngineerController('lsEngineer', { lsEngineerControlSection });
+    export default new EngineerController('lsEngineer', { lsEngineerControlSection, nameBatch });
 
 </script>
 <style scoped>
