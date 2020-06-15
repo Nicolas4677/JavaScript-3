@@ -2,11 +2,13 @@
 
 export default class Comment {
 
-    constructor(author, message) { //TODO: Maybe adding time 
-        
+    constructor(author, team, message) { //TODO: Maybe adding time 
         this.author = author;
+        this.team = team;
         this.message = message;
     }
+
+    // this.comments.push(`[${user}|${team}]: ${currentMsg}`);
 
     //serialize() {}
     //deserialize() {}

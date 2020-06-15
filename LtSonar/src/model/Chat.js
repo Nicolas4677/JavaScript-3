@@ -7,13 +7,11 @@ import Comment from '@/model/Comment.js'
 export default class Chat {
 
     constructor() {
-
         this.comments = [];
     }
 
-    addComment ( author, comment ) {
-        
-        this.comments.push( new Comment( author, comment ) );
+    addComment ( author, team, comment ) {
+        this.comments.push( new Comment( author, team, comment ) );
     }
 
     //serialize () {}

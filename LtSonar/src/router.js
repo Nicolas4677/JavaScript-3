@@ -18,7 +18,7 @@ import lsXO from '@/routes/FirstOfficer.vue'
 export default new Router({
     routes: [
         { path:"/",             name:"Lobby",        component: About },
-        { path:"/navigator",    name:"Navigator",    component: lsNavigator },
+        { path:"/navigator",    name:"Navigator",    component: lsNavigator, props: { user: 'Nicolas' } },
         { path:"/captain",      name:"Captain",      component: lsCaptain, props: { user: 'Alex' } },
         { path:"/firstofficer", name:"FirstOfficer", component: lsXO },
         { path:"/engineer",     name:"Engineer",     component: lsEngineer },

@@ -12,20 +12,16 @@ export default {
     },
 
     actions: {
-
-        addComment({ commit }, author, message ) {
-
-            commit( 'ADD_COMMENT', { author: author, message: message } );
+        addComment({ commit }, params ) {
+            commit( 'ADD_COMMENT', params );
         },
     },
 
     mutations: {
-        
-        ADD_COMMENT: ( state, payload ) => state.chat.addComment( payload.author, payload.message ),
+        ADD_COMMENT: (state, { user = '', team = '', currentMsg = '' }) => state.chat.addComment( user, team, currentMsg ),
     },
 
     getters: {
-
-        comments: state => state.chat.comments,
+        comments: state => state.chat.comments || [],
     },
 }
