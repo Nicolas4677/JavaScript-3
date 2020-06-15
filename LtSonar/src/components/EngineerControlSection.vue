@@ -10,11 +10,31 @@
     <section class="controls-section">  <!-- Just one main element per template -->
         <h1>{{ title }}</h1>
         <div class="control-line">
-            <div v-for="(data, index) in sectionData.topButtons" :key="index" class="control-button special" v-bind:style="data"></div>
+            <form
+                v-for="(data, index) in sectionData.topButtons"
+                :key="index"
+                class="sample-form"
+                @submit.prevent="pressButton(title, index)">
+                <input
+                    type="submit"
+                    value=""
+                    class="control-button special"
+                    v-bind:style="data" />
+            </form>
         </div>
         <hr>
         <div class="control-line">
-            <div v-for="(data, index) in sectionData.bottomButtons" :key="index" class="control-button" v-bind:style="data"></div>
+            <form
+                v-for="(data, index) in sectionData.topButtons"
+                :key="index + 3"
+                class="sample-form"
+                @submit.prevent="pressButton(title, index + 3)">
+                <input
+                    type="submit"
+                    value=""
+                    class="control-button"
+                    v-bind:style="data" />
+            </form>
         </div>
 
     </section>
@@ -34,6 +54,13 @@
                 title: String,
                 sectionData: Object
             }
+
+            this.injectActions([ 'clickEngineerButton' ]);
+            this.injectGetters([ 'engineerControl' ]);
+        }
+
+        pressButton(orientation, index) {
+            this.clickEngineerButton({ orientation: orientation.toLowerCase(), index })
         }
     }
 

@@ -9,12 +9,14 @@ Vue.use( Vuex );
 // Modules
 import ModelStore from '@/store/modelStore';
 import PlayerStore from '@/store/playerStore';
+import GameplayStore from '@/store/gameplayStore';
 
 // Store with modules
 const store = new Vuex.Store({
     modules: {
         PlayerStore,
         ModelStore,
+        GameplayStore,
     }
 });
 
