@@ -366,8 +366,8 @@
 
     .control-panel {
         margin:2vw;
-        border: 1px solid black;
-        background-color: lightgray;
+        /* border: 1px solid black; */
+        background-color: #0E4A7A;
         color: black;
         height: 78vh;
         width: 80vw;

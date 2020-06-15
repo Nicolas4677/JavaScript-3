@@ -13,11 +13,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             <div class="dialog">
 
                 <form class="sample-form">
-                    <label>Sample field
-                        <input name="s1" v-model="formData.sampleOne">
-                    </label><br/>
-                    <label>Number field:
-                        <input name="s2" v-model="formData.sampleTwo">
+                    <label>Nickname:
+                        <input name="nick" v-model="nickname" placeholder="playerName">
                     </label><br/>
                     <button value="Submit" class="">Submit</button>
                 </form>
@@ -36,14 +33,18 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         constructor( name, subComponentList = []) {
             super( name, subComponentList );
             this.vm = {
-                formData: {
-                    sampleOne:"",
-                    sampleTwo:42,
-                }
-            }
+            };
+
             this.props = {
                 name: String,
-            }
+            };
+
+            this.injectActions([ 'setName' ]);
+            this.injectGetters([ 'playerName' ]);
+        }
+
+        login(nickname) {
+            this.setName(nickname);
         }
     }
 

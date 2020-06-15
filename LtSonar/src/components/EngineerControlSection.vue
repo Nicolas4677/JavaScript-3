@@ -43,14 +43,17 @@
 <style scoped>
 
     h1 {
-        color: #061937;
+        background-color: rgb(38, 80, 160);
+        display: flex;
+        justify-content: center;
+        text-align: center;
     }
 
     .controls-section {
         width: 23%;
         height: 50vh;
         padding: 20px;
-        background-color: #BEE5E4;
+        background-color: rgb(17, 33, 80);
     }
 
     .control-line {

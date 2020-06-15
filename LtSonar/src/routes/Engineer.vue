@@ -6,21 +6,18 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
     <section class="engineer-container">
         <div class="control-panel">
-            <h1 class="title">{{ name }}</h1>
-            <div class="batch-container">
-                <name-batch class="batch-item"></name-batch>
+            <div class="header-panel">
+                <div class="header-title">
+                    <h1 class="title">{{ name }}</h1>
+                </div>
+                <div class="batch-container">
+                    <name-batch class="batch-item"></name-batch>
+                </div>
             </div>
             <div class="controls-wrapper">
                 <ls-engineer-control-section v-for="(sectionData, index) in sectionStyleData" :key="index" :sectionData="sectionData" :title="sectionData.title"/>
             </div>
         </div>
-        <ul class="legend">
-            <li><span class=""></span> Super Awesome</li>
-            <li><span class="awesome"></span> Awesome</li>
-            <li><span class="kindaawesome"></span> Kinda Awesome</li>
-            <li><span class="notawesome"></span> Not Awesome</li>
-        </ul>
-
     </section>
 
 </template>
@@ -153,14 +150,38 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 
 </script>
 <style scoped>
-/* Local styles for this template */
+    .header-panel {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        width: 100%;
+        align-content: center;
+    }
+
     .control-container {
         display: inline-block;
         width: 100%;
     }
 
+    .header-title {
+        display: flex;
+        flex-direction: column;
+        background-color: rgb(17, 33, 80);
+        justify-content: center;
+        text-align: center;
+        width: 48%;
+    }
+
     .title {
         text-shadow: 2px 2px #777;
+    }
+
+    .batch-container {
+        width: 48%;
+    }
+
+    .engineer-container {
+        background-color: #0E4A7A;
     }
 
     .controls-wrapper {
