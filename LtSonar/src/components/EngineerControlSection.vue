@@ -18,8 +18,8 @@
                 <input
                     type="submit"
                     value=""
-                    class="control-button special"
-                    v-bind:style="data" />
+                    :class="engineerControl[title.toLowerCase()].find(pressedIndex => pressedIndex === index ) ? 'control-button special pressed' :  'control-button special'"
+                    :style="data" />
             </form>
         </div>
         <hr>
@@ -32,8 +32,8 @@
                 <input
                     type="submit"
                     value=""
-                    class="control-button"
-                    v-bind:style="data" />
+                    :class="engineerControl[title.toLowerCase()].find(pressedIndex => pressedIndex === index + 3 ) ? 'control-button pressed' :  'control-button'"
+                    :style="data" />
             </form>
         </div>
 
@@ -105,7 +105,7 @@
         border: 10px solid black;
     }
 
-    .control-button:active {
+    .pressed {
         background-color: #3e8e41;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
