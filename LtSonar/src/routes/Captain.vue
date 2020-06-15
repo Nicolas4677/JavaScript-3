@@ -24,8 +24,8 @@ Usage: <ls-captain user="Username"/>
 </template>
 <script>
     import Controller from '@/../lib/controller'
-    import lsChat from '@/components/Chat.vue';
-    import lsMap from '@/components/Map.vue';
+    import lsChat from '@/components/Chat.vue'
+    import lsMap from '@/components/Map.vue'
     import nameBatch from '@/components/NameBatch.vue'
 
     class CaptainController extends Controller {
