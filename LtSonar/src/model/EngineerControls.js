@@ -3,10 +3,10 @@
 'use strict'
 
 export default class EngineerControls {
-    contructor() {
-        this.west = [],
-        this.north = [],
-        this.south = [],
-        this.east = []
+    constructor() {
+        this.west = [];
+        this.north = [];
+        this.south = [];
+        this.east = [];
     }
 }

@@ -8,12 +8,12 @@ import Vuex from 'vuex'
 //const baseURL = `${LOCATION.PROTOCOL}//${LOCATION.HOSTNAME}:${LOCATION.PORT}`;
 //const Remote = Axios.create( { baseURL: baseURL });
 
-import EngineerControls from '@/model/EngineerControls';
+import EngineerControls from '../model/EngineerControls.js';
 
 export default {
     // PRIVATE: model state of the application, a bunch of POJS objects
     state: {
-        engineer: new EngineerControls(),
+        engineer: new EngineerControls()
     },
 
     // PUBLIC: injected into components

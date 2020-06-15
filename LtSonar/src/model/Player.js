@@ -3,7 +3,7 @@
 'use strict'
 
 export default class Player {
-    contructor(name) {
+    contructor(name) {        
         this.name = name;
     }
 }
