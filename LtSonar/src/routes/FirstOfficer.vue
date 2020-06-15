@@ -19,6 +19,8 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
                             v-bind:imgSrc="item.imgSrc">
                 </xo-system>
             </div>
+
+            <chat></chat>
         </div>
     </section>
 
@@ -27,6 +29,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import Controller from '@/../lib/controller'
     import xoSystem from '@/components/SonarSystem.vue'
     import nameBatch from '@/components/NameBatch.vue'
+    import chat from '@/components/Chat.vue'
 
     //Images
     import minesSystemImg from "@/assets/systems/mines-system.jpg"
@@ -82,7 +85,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new FirstOfficerController('lsXO', { xoSystem, nameBatch });
+    export default new FirstOfficerController('lsXO', { xoSystem, nameBatch, chat });
 
 </script>
 <style scoped>

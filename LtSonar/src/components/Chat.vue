@@ -35,10 +35,16 @@
                 user: String,
                 team: String,
             }
+
+            this.injectActions( ['addComment'] );
+            this.injectGetters( ['comments'] );
         }
 
         send() {
             this.theStream += this.newMsg;
+
+            this.addComment( this.props.user, this.newMsg );
+
             this.newMsg = "";
         }
     }

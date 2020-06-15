@@ -9,12 +9,14 @@ Vue.use( Vuex );
 // Modules
 import ModelStore from '@/store/modelStore';
 import PlayerStore from '@/store/playerStore';
+import ChatStore from '@/store/chatStore'
 
 // Store with modules
 const store = new Vuex.Store({
     modules: {
         PlayerStore,
         ModelStore,
+        ChatStore
     }
 });
 
