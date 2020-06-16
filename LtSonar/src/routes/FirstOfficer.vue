@@ -10,15 +10,17 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             <div class="grid-container">
                 <name-batch class="batch-item"></name-batch>
                 <xo-system class="submarine-stats-item"
-                            v-bind:id="submarineStats.id"
-                            v-bind:amountToUnlock="submarineStats.amountToUnlock"
-                            v-bind:imgSrc="submarineStats.imgSrc"></xo-system>
+                            :id="submarineStats.id"
+                            :amountToUnlock="submarineStats.amountToUnlock"
+                            :imgSrc="submarineStats.imgSrc"></xo-system>
                 <xo-system v-for="(item, index) in systems" :key="index" 
-                            v-bind:id="item.id" 
-                            v-bind:amountToUnlock="item.amountToUnlock"
-                            v-bind:imgSrc="item.imgSrc">
+                            :id="item.id" 
+                            :amountToUnlock="item.amountToUnlock"
+                            :imgSrc="item.imgSrc">
                 </xo-system>
             </div>
+
+            <chat></chat>
         </div>
     </section>
 
@@ -27,6 +29,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
     import Controller from '@/../lib/controller'
     import xoSystem from '@/components/SonarSystem.vue'
     import nameBatch from '@/components/NameBatch.vue'
+    import chat from '@/components/Chat.vue'
 
     //Images
     import minesSystemImg from "@/assets/systems/mines-system.jpg"
@@ -82,7 +85,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new FirstOfficerController('lsXO', { xoSystem, nameBatch });
+    export default new FirstOfficerController('lsXO', { xoSystem, nameBatch, chat });
 
 </script>
 <style scoped>

@@ -31,6 +31,10 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.vm = {
                 name: 'Navigator control panel',
             }
+
+            this.props = {
+                user: String
+            }
         }
     }
 

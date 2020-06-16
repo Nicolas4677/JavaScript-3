@@ -8,11 +8,15 @@
     <section class="component-style">
         <div class="chat panel-bottom">
             <div class="messages">
-                {{ theStream }}
+                <span v-for="({ author, team, message }, index) in comments" :key="index">{{ `[${author}|${team}]: ${message}` }}<br></span>
             </div>
             <div class="clear"></div>
-            <input type="text" name="entry" class="entry" v-model="newMsg">
-            <button v-on:click="send">Send</button>
+            <form class="sample-form" @submit.prevent="send(user, team, currentMsg)">
+                    <label>New message:
+                        <input type="text" name="entry" class="entry" v-model="currentMsg">
+                    </label><br/>
+                    <input value="Send" type="submit" />
+            </form>
             <div class="title">From {{ user }} ({{ team }})</div>
         </div>
     </section>
@@ -28,18 +32,20 @@
         constructor( name, subComponentList = []) {
             super( name, subComponentList )
             this.vm = {
-                theStream: "",
-                newMsg: "",
+                currentMsg: '',
             }
             this.props = { // props are passed in when using this component
                 user: String,
                 team: String,
             }
+
+            this.injectActions( ['addComment'] );
+            this.injectGetters( ['comments'] );
         }
 
-        send() {
-            this.theStream += this.newMsg;
-            this.newMsg = "";
+        send(user, team, currentMsg) {
+            this.addComment({ user, team, currentMsg });
+            this.currentMsg = '';
         }
     }
 

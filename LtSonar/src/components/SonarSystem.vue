@@ -6,17 +6,18 @@
         <div class="title">
             {{ id }}
         </div>
-
         <div style="display: flex">
-            <img v-bind:src=imgSrc v-bind:width=imgWidth v-bind:height=imgHeight>
+            <img :src=imgSrc :width=imgWidth :height=imgHeight v-on:click="activate(id)">
             <div style="display: flex; flex-direction: column; justify-content: center;">
                 <div style="display: flex; flex-direction: row; justify-content: center;">
-                    <div class="block" v-for="(item, index) in amountToUnlock" :key="index">
-                    </div>
+                    <div
+                        v-for="(item, index) in amountToUnlock"
+                        :class="firstOfficerControl[id.toLowerCase()] - index > 0 ? 'block active' : 'block'"
+                        :key="index"
+                    ></div>
                 </div>
             </div>
         </div>
-
     </section>
 
 </template>
@@ -40,6 +41,18 @@
                 amountToUnlock: Number,
                 imgSrc: String
             }
+
+            this.injectActions( ['clickFirstOfficerControl'] );
+            this.injectGetters( ['firstOfficerControl'] );
+        }
+
+        activate(operation) {
+            const id = operation.toLowerCase();
+
+            if (this.firstOfficerControl[id] === this.amountToUnlock) {
+                return;
+            }
+            this.clickFirstOfficerControl({ id })
         }
     }
 
@@ -74,11 +87,13 @@
     .block {
         width: 50px; 
         height: 50px; 
-
         margin: 10px;
         border-radius: 10%;
-        
-        background-color: rgba(0, 0, 0, 0.336); 
+        background-color: rgba(0, 0, 0, 0.336);
+    }
+
+    .active {
+        background-color: rgba(0, 255, 0, 0.336);
     }
 
 </style>

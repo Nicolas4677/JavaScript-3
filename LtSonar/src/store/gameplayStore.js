@@ -9,11 +9,15 @@ import Vuex from 'vuex'
 //const Remote = Axios.create( { baseURL: baseURL });
 
 import EngineerControls from '../model/EngineerControls.js';
+import Map from '../model/Map.js';
+import FirstOfficerControls from '../model/FirstOfficerControls.js';
 
 export default {
     // PRIVATE: model state of the application, a bunch of POJS objects
     state: {
-        engineer: new EngineerControls()
+        engineer: new EngineerControls(),
+        map: new Map(),
+        firstOfficer: new FirstOfficerControls()
     },
 
     // PUBLIC: injected into components
@@ -21,6 +25,9 @@ export default {
     actions: {
         clickEngineerButton({ commit }, params ) {
             commit('SET_ENGINEER_BUTTON', params);
+        },
+        clickFirstOfficerControl({ commit }, params ) {
+            commit('SET_FIRST_OFFICER_STATUS', params);
         }
     },
 
@@ -29,7 +36,12 @@ export default {
         SET_ENGINEER_BUTTON: ( state, params ) => {
             const { orientation, index } = params;
 
-            state.engineer[orientation] = state.engineer[orientation] ? [ ...state.engineer[orientation], index ] : [ index ]
+            state.engineer[orientation] = [ ...state.engineer[orientation], index ]
+        },
+        SET_FIRST_OFFICER_STATUS: ( state, params ) => {
+            const { id } = params;
+
+            ++state.firstOfficer[id];
         }
     },
 
@@ -37,5 +49,6 @@ export default {
     // called to retrieve state data from the store
     getters: {
         engineerControl: state => state.engineer,
+        firstOfficerControl: state => state.firstOfficer
     }
 }

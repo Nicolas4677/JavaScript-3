@@ -10,6 +10,7 @@ Vue.use( Vuex );
 import ModelStore from '@/store/modelStore';
 import PlayerStore from '@/store/playerStore';
 import GameplayStore from '@/store/gameplayStore';
+import ChatStore from '@/store/chatStore'
 
 // Store with modules
 const store = new Vuex.Store({
@@ -17,6 +18,7 @@ const store = new Vuex.Store({
         PlayerStore,
         ModelStore,
         GameplayStore,
+        ChatStore
     }
 });
 
