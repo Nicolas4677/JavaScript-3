@@ -21,19 +21,23 @@ export default {
     // PUBLIC: injected into components
     // called to do things to the state via ajax and mutations
     actions: {
-        setName({ commit }, name) {
-            commit('SET_NAME', name);
+        setTeam({ commit }, params) {
+            commit('SET_TEAM', params);
+        },
+        setRole({ commit }, params) {
+            commit('SET_ROLE', params);
         }
     },
 
     // PRIVATE: caled by actions to modify the state to prevent deadlock
     mutations: {
-        SET_NAME: (state, name) =>  state.player.name = name
+        SET_TEAM: (state, { team='' }) =>  state.player.setTeam = team,
+        SET_ROLE: (state, { role='' }) =>  state.player.setRole = role
     },
 
     // PUBLIC: injected into components
     // called to retrieve state data from the store
     getters: {
-        playerName: state => state.player.name
+        playerId: state => state.player
     },
 }
