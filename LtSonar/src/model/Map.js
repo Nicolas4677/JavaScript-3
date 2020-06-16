@@ -4,20 +4,8 @@
 
 export default class EngineerControls {
     constructor() {
-        this.map =  [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'ground', 'ground', 'water'  ],
-                    [ 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water'  ],
-                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'ground', 'water', 'ground', 'water', 'water', 'ground', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'ground', 'water', 'ground', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'ground', 'ground', 'water'  ],
-                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
-                    [ 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water', 'water'  ],
-                    [ 'ground', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'ground', 'water', 'water'  ],
-                    [ 'water', 'water', 'water', 'ground', 'water', 'water', 'ground', 'water', 'ground', 'water', 'water', 'water', 'water', 'ground', 'water'  ],
-                    [ 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ]
+        this.shipPlaced = false;
+        this.currentOrientation = 'north';
+        this.currentPlace;
     }
 }

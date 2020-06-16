@@ -14,7 +14,7 @@
                         v-for="(item, index) in amountToUnlock"
                         :class="firstOfficerControl[id.toLowerCase()] - index > 0 ? 'block active' : 'block'"
                         :key="index"
-                    ></div>
+                    >{{firstOfficerControl[id.toLowerCase()]}}</div>
                 </div>
             </div>
         </div>

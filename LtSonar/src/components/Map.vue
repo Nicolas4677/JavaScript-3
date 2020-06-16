@@ -14,13 +14,17 @@
         <table>
             <tr>
                 <th></th>
-                <th v-for="(row, index) in mapCells" :key="index">
+                <th v-for="(row, index) in teamMap" :key="index">
                     {{ index + 1 }}
                 </th>
             </tr>
-            <tr v-for="(row, index) in mapCells" :key="index">
-                <th>{{ String.fromCharCode(index + 65) }}</th>
-                <td v-for="(value, index) in row" :key="index" :class="value === 0 ? 'water' : 'ground'"></td>
+            <tr v-for="(row, outerIndex) in teamMap" :key="outerIndex">
+                <th>{{ String.fromCharCode(outerIndex + 65) }}</th>
+                <td
+                    v-for="(value, innerIndex) in row"
+                    :key="`${value}-${innerIndex}`"
+                    :class="value"
+                    v-on:click="selectCell(outerIndex, innerIndex)"></td>
             </tr>
         </table>
     </section>
@@ -34,29 +38,43 @@
     class MapController extends Controller {
 
         constructor( name, subComponentList = []) {
-            super( name, subComponentList )
+            super( name, subComponentList );
             this.vm = {
-                mapCells: [
-                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
-                    [ 0,0,1,0,0,0,1,0,0,0,0,0,1,1,0 ],
-                    [ 0,0,1,0,0,0,0,0,1,0,0,0,1,0,0 ],
-                    [ 0,0,0,0,0,0,0,0,1,0,0,0,0,0,0 ],
-                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
-                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
-                    [ 0,1,0,1,0,0,1,0,1,0,0,0,0,0,0 ],
-                    [ 0,1,0,1,0,0,1,0,0,0,0,0,0,0,0 ],
-                    [ 0,0,0,1,0,0,0,1,0,0,0,1,1,1,0 ],
-                    [ 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0 ],
-                    [ 0,0,0,1,0,0,0,0,0,0,0,0,0,0,0 ],
-                    [ 0,0,1,0,0,0,0,1,0,0,0,1,0,0,0 ],
-                    [ 1,0,0,1,0,0,0,0,0,0,0,0,1,0,0 ],
-                    [ 0,0,0,1,0,0,1,0,1,0,0,0,0,1,0 ],
-                    [ 0,0,0,0,1,0,0,0,0,0,0,0,0,0,0 ]
+                teamMap: [
+                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'ground', 'ground', 'water'  ],
+                    [ 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water'  ],
+                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'ground', 'water', 'ground', 'water', 'water', 'ground', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'ground', 'water', 'ground', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'ground', 'ground', 'water'  ],
+                    [ 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ],
+                    [ 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'ground', 'water', 'water', 'water'  ],
+                    [ 'ground', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'ground', 'water', 'water'  ],
+                    [ 'water', 'water', 'water', 'ground', 'water', 'water', 'ground', 'water', 'ground', 'water', 'water', 'water', 'water', 'ground', 'water'  ],
+                    [ 'water', 'water', 'water', 'water', 'ground', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water', 'water'  ]
                 ]
             }
             this.props = {
                 size: Number
             }
+
+            this.injectActions([ 'setShip' ]);
+            this.injectGetters([ 'shipIsplaced' ]);
+        }
+
+        selectCell(innerIndex, outerIndex) {
+            const x = innerIndex;
+            const y = outerIndex;
+
+            if (!this.shipIsplaced) {
+                this.teamMap[x].splice(y, 1, 'current');
+                this.setShip({x, y});
+            }
+            console.log(x, y);
         }
     }
 
@@ -95,6 +113,10 @@
 
     .ground {
         background-color: green;
+    }
+
+    .current {
+        background-color: black;
     }
 
 </style>

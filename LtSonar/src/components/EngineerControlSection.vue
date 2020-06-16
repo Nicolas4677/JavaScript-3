@@ -6,35 +6,26 @@
 @copyright (c) 2019. Scott Henshaw. All Rights Reserved.
 -->
 <template>
-
-    <section class="controls-section">  <!-- Just one main element per template -->
+    <section :class="`${title.toLowerCase() !== currentShipOrientation ? 'disabled' : '' } controls-section`">  <!-- Just one main element per template -->
         <h1>{{ title }}</h1>
         <div class="control-line">
-            <form
+            <div
                 v-for="(data, index) in sectionData.topButtons"
                 :key="index"
-                class="sample-form"
-                @submit.prevent="pressButton(title, index)">
-                <input
-                    type="submit"
-                    value=""
-                    :class="engineerControl[title.toLowerCase()].find(pressedIndex => pressedIndex === index ) ? 'control-button special pressed' :  'control-button special'"
-                    :style="data" />
-            </form>
+                @click="pressButton(title.toLowerCase(), index)"
+                :class="determinePressed(index, 'control-button special')"
+                :style="data">
+            </div>
         </div>
         <hr>
         <div class="control-line">
-            <form
-                v-for="(data, index) in sectionData.topButtons"
+            <div
+                v-for="(data, index) in sectionData.bottomButtons"
                 :key="index + 3"
-                class="sample-form"
-                @submit.prevent="pressButton(title, index + 3)">
-                <input
-                    type="submit"
-                    value=""
-                    :class="engineerControl[title.toLowerCase()].find(pressedIndex => pressedIndex === index + 3 ) ? 'control-button pressed' :  'control-button'"
-                    :style="data" />
-            </form>
+                @click="pressButton(title.toLowerCase(), index + 3)"
+                :class="determinePressed(index + 3, 'control-button')"
+                :style="data">
+            </div>
         </div>
 
     </section>
@@ -56,7 +47,18 @@
             }
 
             this.injectActions([ 'clickEngineerButton' ]);
-            this.injectGetters([ 'engineerControl' ]);
+            this.injectGetters([ 'engineerControl', 'currentShipOrientation' ]);
+        }
+        determinePressed(index, baseClass) {
+            for (const value of this.engineerControl[this.title.toLowerCase()]) {
+                console.log(value);
+                
+                if (value === index) {
+                    return `${baseClass} pressed`;
+                }
+            }
+
+            return baseClass;
         }
 
         pressButton(orientation, index) {
@@ -109,6 +111,11 @@
         background-color: #3e8e41;
         box-shadow: 0 5px #666;
         transform: translateY(4px);
+    }
+
+    .disabled {
+        pointer-events: none;
+        opacity: 0.4;
     }
 
 </style>

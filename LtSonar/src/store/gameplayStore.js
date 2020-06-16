@@ -16,7 +16,8 @@ export default {
     // PRIVATE: model state of the application, a bunch of POJS objects
     state: {
         engineer: new EngineerControls(),
-        map: new Map(),
+        teamMap: new Map(),
+        enemyMap: new Map(),
         firstOfficer: new FirstOfficerControls()
     },
 
@@ -28,6 +29,9 @@ export default {
         },
         clickFirstOfficerControl({ commit }, params ) {
             commit('SET_FIRST_OFFICER_STATUS', params);
+        },
+        setShip({ commit }, params) {
+            commit('SET_SHIP', params)
         }
     },
 
@@ -42,13 +46,48 @@ export default {
             const { id } = params;
 
             ++state.firstOfficer[id];
+        },
+        SET_SHIP: ( state, params ) => {
+            const { x, y } = params;
+
+            if (!state.teamMap.currentPlace) {
+                state.teamMap.currentPlace = { x, y };
+                return;
+            }
+            
+            const deltaX = state.teamMap.currentPlace.x - x;
+            const deltaY = state.teamMap.currentPlace.y - y;
+            state.teamMap.currentPlace = { x, y };
+
+            if (deltaX === 0 && deltaY === 1) {
+                state.teamMap.currentOrientation = 'west';
+            } else if (deltaX === 0 && deltaY === -1) {
+                state.teamMap.currentOrientation = 'east';
+            } else if (deltaX === 1 && deltaY === 0) {
+                state.teamMap.currentOrientation = 'north';
+            } else if (deltaX === -1 && deltaY === 0) {
+                state.teamMap.currentOrientation = 'south';
+            }
+            console.log(state.teamMap.currentOrientation);
+            
         }
     },
 
     // PUBLIC: injected into components
     // called to retrieve state data from the store
     getters: {
+        // Engineer contols
         engineerControl: state => state.engineer,
-        firstOfficerControl: state => state.firstOfficer
+        // First officer controls
+        firstOfficerControl: state => state.firstOfficer,
+        // Map
+        teamMap: state => state.teamMap.mapRepresentation,
+        shipIsplaced: state => state.teamMap.shipPlaced,
+        currentShipOrientation: state => {
+            console.log(state.teamMap.currentOrientation);
+
+            return state.teamMap.currentOrientation
+        },
+        enemyShipCurrentOrientation: state => state.enemyMap.currentOrientation
     }
 }
