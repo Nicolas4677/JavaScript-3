@@ -20,7 +20,7 @@ export default new Router({
         { path:"/",             name:"Lobby",        component: About },
         { path:"/navigator",    name:"Navigator",    component: lsNavigator, props: { user: 'Nicolas' } },
         { path:"/captain",      name:"Captain",      component: lsCaptain, props: { user: 'Alex' } },
-        { path:"/firstofficer", name:"FirstOfficer", component: lsXO, props: { user: 'lmao' } },
+        { path:"/firstofficer", name:"FirstOfficer", component: lsXO, props: { user: 'Nicolas' } },
         { path:"/engineer",     name:"Engineer",     component: lsEngineer },
         { path:"/home",         name:"Home",         component: Home, props: { name: "LtSonar"} },
     ]
