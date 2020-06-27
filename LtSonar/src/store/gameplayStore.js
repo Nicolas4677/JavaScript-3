@@ -48,6 +48,7 @@ export default {
             }
 
             pressedButton.isActive = true;
+            console.log(pressedButton);
             const circuitButtons = state.engineer.getActiveByCircuit(pressedButton.circuit);
             console.log(circuitButtons);
             
@@ -102,6 +103,7 @@ export default {
         teamMap: state => state.teamMap.mapRepresentation,
         shipIsplaced: state => state.teamMap.shipPlaced,
         currentShipOrientation: state => state.teamMap.currentOrientation,
-        enemyShipCurrentOrientation: state => state.enemyMap.currentOrientation
+        enemyShipCurrentOrientation: state => state.enemyMap.currentOrientation,
+        submarine: state => state.submarine
     }
 }

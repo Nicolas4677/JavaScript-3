@@ -9,14 +9,15 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             <h1 class="title">{{ name }}</h1>
             <div class="grid-container">
                 <name-batch class="batch-item"></name-batch>
-                <xo-system class="submarine-stats-item"
+                <health-system class="submarine-stats-item"
                             :id="submarineStats.id"
-                            :amountToUnlock="submarineStats.amountToUnlock"
-                            :imgSrc="submarineStats.imgSrc"></xo-system>
+                            :imgSrc="submarineStats.imgSrc"
+                            ></health-system>
                 <xo-system v-for="(item, index) in systems" :key="index" 
                             :id="item.id" 
                             :amountToUnlock="item.amountToUnlock"
-                            :imgSrc="item.imgSrc">
+                            :imgSrc="item.imgSrc"
+                            :type="item.type">
                 </xo-system>
             </div>
 
@@ -29,6 +30,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 <script>
     import Controller from '@/../lib/controller'
     import xoSystem from '@/components/SonarSystem.vue'
+    import healthSystem from '@/components/SubmarineHealth.vue'
     import nameBatch from '@/components/NameBatch.vue'
     import lsChat from '@/components/Chat.vue'
 
@@ -46,40 +48,45 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
             this.vm = {
                 name: 'First Officer control panel',
                 submarineStats: {
-                    id: "Stats",
-                    amountToUnlock: 10,
-                    imgSrc: submarineSystemImg
+                    id: "Health",
+                    imgSrc: submarineSystemImg,
                 },
                 systems: [
                     { 
                         id: "Mines",
                         amountToUnlock: 3,
-                        imgSrc: minesSystemImg // OR Require("@/assets/systems/mines-system.jpg")
+                        imgSrc: minesSystemImg, // OR Require("@/assets/systems/mines-system.jpg")
+                        type: 'ATTACK'
                     },
                     { 
                         id: "Drones",
                         amountToUnlock: 4,
-                        imgSrc: dronesSystemImg
+                        imgSrc: dronesSystemImg,
+                        type: 'SONAR'
                     },
                     { 
                         id: "Silence",
                         amountToUnlock: 6,
-                        imgSrc: submarineSystemImg
+                        imgSrc: submarineSystemImg,
+                        type: 'SUBMARINE'
                     },
                     { 
                         id: "Torpedo",
                         amountToUnlock: 3,
-                        imgSrc: torpedosSystemImg
+                        imgSrc: torpedosSystemImg,
+                        type: 'ATTACK'
                     },
                     { 
                         id: "Sonar",
                         amountToUnlock: 3,
-                        imgSrc: sonarSystemImg
+                        imgSrc: sonarSystemImg,
+                        type: 'SONAR'
                     },
                     { 
                         id: "Scenario",
                         amountToUnlock: 6,
-                        imgSrc: submarineSystemImg
+                        imgSrc: submarineSystemImg,
+                        type: 'SUBMARINE'
                     }
                 ]
             }
@@ -91,7 +98,7 @@ Copyright (c) 2018. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
         }
     }
 
-    export default new FirstOfficerController('lsXO', { xoSystem, nameBatch, lsChat });
+    export default new FirstOfficerController('lsXO', { xoSystem, healthSystem, nameBatch, lsChat });
 
 </script>
 <style scoped>

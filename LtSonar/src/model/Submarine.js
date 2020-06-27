@@ -6,5 +6,6 @@ export default class Submarine {
     constructor() {        
         this.isSubmerged = true;
         this.health = 4;
+        this.maxHealth = 4;
     }
 }
