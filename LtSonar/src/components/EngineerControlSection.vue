@@ -49,13 +49,10 @@
             this.injectActions([ 'clickEngineerButton' ]);
             this.injectGetters([ 'engineerControl', 'currentShipOrientation' ]);
         }
+
         determinePressed(index, baseClass) {
-            for (const value of this.engineerControl[this.title.toLowerCase()]) {
-                console.log(value);
-                
-                if (value === index) {
-                    return `${baseClass} pressed`;
-                }
+            if (this.engineerControl[this.title.toLowerCase()][index].isActive) {
+                return `${baseClass} pressed`;
             }
 
             return baseClass;
