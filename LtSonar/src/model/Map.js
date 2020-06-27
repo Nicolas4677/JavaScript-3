@@ -5,7 +5,7 @@
 export default class EngineerControls {
     constructor() {
         this.shipPlaced = false;
-        this.currentOrientation = 'north';
+        this.currentOrientation = 'INVALID';
         this.currentPlace;
     }
 }

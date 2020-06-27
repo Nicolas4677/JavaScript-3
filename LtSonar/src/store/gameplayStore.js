@@ -11,6 +11,7 @@ import Vuex from 'vuex'
 import EngineerControls from '../model/EngineerControls.js';
 import Map from '../model/Map.js';
 import FirstOfficerControls from '../model/FirstOfficerControls.js';
+import Submarine from '../model/Submarine.js';
 
 export default {
     // PRIVATE: model state of the application, a bunch of POJS objects
@@ -18,7 +19,8 @@ export default {
         engineer: new EngineerControls(),
         teamMap: new Map(),
         enemyMap: new Map(),
-        firstOfficer: new FirstOfficerControls()
+        firstOfficer: new FirstOfficerControls(),
+        submarine: new Submarine()
     },
 
     // PUBLIC: injected into components
@@ -39,8 +41,26 @@ export default {
     mutations: {
         SET_ENGINEER_BUTTON: ( state, params ) => {
             const { orientation, index } = params;
+            const pressedButton = state.engineer[orientation][index];
 
-            state.engineer[orientation] = [ ...state.engineer[orientation], index ]
+            if (pressedButton.isActive) {
+                return;
+            }
+
+            pressedButton.isActive = true;
+            const circuitButtons = state.engineer.getActiveByCircuit(pressedButton.circuit);
+            console.log(circuitButtons);
+            
+
+            if (circuitButtons.length === 4) {
+                state.engineer.resetCircuit(pressedButton.circuit);
+            }
+
+            if (state.engineer.checkForRadioactiveHit()) {
+                --state.submarine.health;
+            }
+
+            state.teamMap.currentOrientation = 'INVALID';
         },
         SET_FIRST_OFFICER_STATUS: ( state, params ) => {
             const { id } = params;
@@ -68,8 +88,6 @@ export default {
             } else if (deltaX === -1 && deltaY === 0) {
                 state.teamMap.currentOrientation = 'south';
             }
-            console.log(state.teamMap.currentOrientation);
-            
         }
     },
 
@@ -83,11 +101,7 @@ export default {
         // Map
         teamMap: state => state.teamMap.mapRepresentation,
         shipIsplaced: state => state.teamMap.shipPlaced,
-        currentShipOrientation: state => {
-            console.log(state.teamMap.currentOrientation);
-
-            return state.teamMap.currentOrientation
-        },
+        currentShipOrientation: state => state.teamMap.currentOrientation,
         enemyShipCurrentOrientation: state => state.enemyMap.currentOrientation
     }
 }
