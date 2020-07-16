@@ -14,7 +14,7 @@ const PORT = 3000;
 
 class Server {
 
-    constructor ( api, port = PORT) {
+    constructor ( port = PORT) {
         
         this.api = Express();
         this.router = Express.Router();

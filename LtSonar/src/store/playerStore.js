@@ -7,12 +7,11 @@ import Vuex from 'vuex'
 import Axios from 'axios'
 Vue.use( Vuex, Axios)
 
-//const baseURL = `${LOCATION.PROTOCOL}//${LOCATION.HOSTNAME}:${LOCATION.PORT}`;
-//const Remote = Axios.create( { baseURL: baseURL });
+const baseURL = `http://localhost:3000`;
+const Remote = Axios.create( { baseURL: baseURL });
 
 // import User from '@/model/user' // import POJS model objects
 import Player from '@/model/Player';
-import { response } from 'express';
 
 
 export default {
@@ -26,12 +25,13 @@ export default {
     actions: {
         setTeam({ commit }, params) {
 
-            Axios.post('/api/player/login/', { name: 'Test' })
+            Remote.post('/api/player/login/', { name: 'Test' })
             .then( response => response.data)
             .then( data => (data.error ? error => { throw(error)} : data.payload))
             .then(payload => {
 
                 commit('SET_TEAM', payload);
+                console.log(payload);
             })
             .catch( error => {
                 console.log(error);
