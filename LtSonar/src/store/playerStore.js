@@ -4,12 +4,15 @@ Copyright (c) 2019. Scott Henshaw, Kibble Online Inc. All Rights Reserved.
 */
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Axios from 'axios'
+Vue.use( Vuex, Axios)
 
 //const baseURL = `${LOCATION.PROTOCOL}//${LOCATION.HOSTNAME}:${LOCATION.PORT}`;
 //const Remote = Axios.create( { baseURL: baseURL });
 
 // import User from '@/model/user' // import POJS model objects
 import Player from '@/model/Player';
+import { response } from 'express';
 
 
 export default {
@@ -22,7 +25,17 @@ export default {
     // called to do things to the state via ajax and mutations
     actions: {
         setTeam({ commit }, params) {
-            commit('SET_TEAM', params);
+
+            Axios.post('/api/player/login/', { name: 'Test' })
+            .then( response => response.data)
+            .then( data => (data.error ? error => { throw(error)} : data.payload))
+            .then(payload => {
+
+                commit('SET_TEAM', payload);
+            })
+            .catch( error => {
+                console.log(error);
+            })
         },
         setRole({ commit }, params) {
             commit('SET_ROLE', params);
