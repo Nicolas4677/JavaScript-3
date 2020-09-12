@@ -12,6 +12,8 @@ import PlayerStore from '@/store/playerStore';
 import GameplayStore from '@/store/gameplayStore';
 import ChatStore from '@/store/chatStore'
 
+const data = new Connection();
+
 // Store with modules
 const store = new Vuex.Store({
     modules: {
